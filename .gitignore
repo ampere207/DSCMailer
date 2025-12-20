@@ -1,0 +1,7 @@
+.env
+assets/
+output/
+uploads/
+
+main_template.png
+testing.csv

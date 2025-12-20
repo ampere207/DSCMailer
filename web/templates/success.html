@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Success - Certificate Mailer</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+
+  <div class="container success-container">
+    <div class="success-icon">✓</div>
+    <h1>Certificates Sent Successfully</h1>
+    <p class="subtitle">Your certificates have been sent to the following recipients:</p>
+
+    <div class="recipients-list">
+      {{range .Recipients}}
+      <div class="recipient-item">
+        <span class="recipient-name">{{.Name}}</span>
+        <span class="recipient-email">{{.Email}}</span>
+      </div>
+      {{end}}
+    </div>
+
+    <div class="summary">
+      <p>Total sent: <strong>{{.Count}}</strong></p>
+    </div>
+
+    <a href="/" class="back-button">Send More Certificates</a>
+  </div>
+
+</body>
+</html>

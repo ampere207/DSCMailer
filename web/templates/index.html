@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certificate Mailer</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h1>Certificate Mailer</h1>
+    <p class="subtitle">Send personalized certificates via email</p>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      
+      <div class="form-group">
+        <label for="template">Certificate Template</label>
+        <input
+          type="file"
+          id="template"
+          name="template"
+          accept=".png,.jpg,.jpeg"
+          required
+        />
+        <span class="hint">PNG or JPG format</span>
+      </div>
+
+      <div class="form-group">
+        <label for="file">Recipients List</label>
+        <input
+          type="file"
+          id="file"
+          name="file"
+          accept=".csv,.xlsx"
+          required
+        />
+        <span class="hint">CSV with <code>name</code> and <code>email</code> columns</span>
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Email Subject</label>
+        <input
+          type="text"
+          id="subject"
+          name="subject"
+          placeholder="Your Certificate"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="body">Email Body</label>
+        <textarea
+          id="body"
+          name="body"
+          rows="6"
+          placeholder="Hello {name},&#10;&#10;Congratulations! Please find your certificate attached.&#10;&#10;Best regards,&#10;Your Organization"
+          required
+        ></textarea>
+        <span class="hint">Use <code>{name}</code> to personalize with recipient's name</span>
+      </div>
+
+      <button type="submit">Send Certificates</button>
+      
+    </form>
+  </div>
+
+</body>
+</html>
