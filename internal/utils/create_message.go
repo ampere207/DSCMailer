@@ -8,13 +8,19 @@ import (
 	"path/filepath"
 )
 
-func BuildMessage(from string, to string, subject string, body string, attachmentPath string) ([]byte, error) {
+func BuildMessage(from string, fromName string, to string, subject string, body string, attachmentPath string) ([]byte, error) {
 
 	var buf bytes.Buffer
 	boundary := "CERT_MAILER_BOUNDARY"
 
+	// Format From header with name if provided
+	fromHeader := from
+	if fromName != "" {
+		fromHeader = fmt.Sprintf("%s <%s>", fromName, from)
+	}
+
 	// Headers
-	buf.WriteString(fmt.Sprintf("From: %s\r\n", from))
+	buf.WriteString(fmt.Sprintf("From: %s\r\n", fromHeader))
 	buf.WriteString(fmt.Sprintf("To: %s\r\n", to))
 	buf.WriteString(fmt.Sprintf("Subject: %s\r\n", subject))
 	buf.WriteString("MIME-Version: 1.0\r\n")

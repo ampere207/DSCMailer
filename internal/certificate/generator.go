@@ -32,7 +32,7 @@ func Generate(name string) (string, error) {
 	// Create drawing context
 	dc := gg.NewContextForImage(img)
 
-	// Load font (increased size for better visibility)
+	// Load font with proper size
 	if err := dc.LoadFontFace(fontPath, 85); err != nil {
 		return "", err
 	}
@@ -43,10 +43,13 @@ func Generate(name string) (string, error) {
 	// Draw name centered on the blank line
 	// X: centered horizontally with slight offset to the right
 	// Y: positioned at approximately 51% from top to align with blank line
+	// Round coordinates to avoid subpixel rendering issues
+	x := float64(dc.Width())/2 + 200
+	y := float64(dc.Height()) * 0.51
 	dc.DrawStringAnchored(
 		name,
-		float64(dc.Width())/2+200,
-		float64(dc.Height())*0.51,
+		x,
+		y,
 		0.5,
 		0.5,
 	)
@@ -82,7 +85,7 @@ func GenerateWithTemplate(name, templatePath string) (string, error) {
 	// Create drawing context
 	dc := gg.NewContextForImage(img)
 
-	// Load font (increased size for better visibility)
+	// Load font with proper size
 	if err := dc.LoadFontFace(fontPath, 85); err != nil {
 		return "", err
 	}
@@ -93,10 +96,13 @@ func GenerateWithTemplate(name, templatePath string) (string, error) {
 	// Draw name centered on the blank line
 	// X: centered horizontally with slight offset to the right
 	// Y: positioned at approximately 51% from top to align with blank line
+	// Round coordinates to avoid subpixel rendering issues
+	x := float64(dc.Width())/2 + 200
+	y := float64(dc.Height()) * 0.51
 	dc.DrawStringAnchored(
 		name,
-		float64(dc.Width())/2+200,
-		float64(dc.Height())*0.51,
+		x,
+		y,
 		0.5,
 		0.5,
 	)
