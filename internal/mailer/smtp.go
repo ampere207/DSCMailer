@@ -14,6 +14,7 @@ func SendSMTP(to string, subject string, body string, attachmentPath string) err
 	pass := os.Getenv("SMTP_PASS")
 	host := os.Getenv("SMTP_HOST")
 	port := os.Getenv("SMTP_PORT")
+	senderName := os.Getenv("SMTP_SENDER_NAME")
 
 	auth := smtp.PlainAuth(
 		"",
@@ -24,6 +25,7 @@ func SendSMTP(to string, subject string, body string, attachmentPath string) err
 
 	msg, err := utils.BuildMessage(
 		user,
+		senderName,
 		to,
 		subject,
 		body,
