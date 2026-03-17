@@ -82,7 +82,7 @@ go build -o dsc-mailer cmd/server/main.go
 The server will start on `http://127.0.0.1:3000`
 
 ## Project Structure
-
+ 
 ```
 DSC-mailer/
 ├── cmd/
